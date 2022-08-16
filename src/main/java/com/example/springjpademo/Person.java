@@ -1,10 +1,13 @@
 package com.example.springjpademo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+
+
+import javax.persistence.*;
 
 @Entity
+@NamedQuery(
+        name = "custom_person_select",
+        query = "SELECT p FROM Person p")
 public class Person {
     @Id
     private int id;

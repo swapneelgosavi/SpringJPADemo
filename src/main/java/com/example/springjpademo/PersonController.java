@@ -20,13 +20,22 @@ public class PersonController {
         return personRepository.findAll();
     }
 
-/*
-    @GetMapping("/personsCustom")
-    public List<Person> getPersonCust(){
-        System.out.println(personRepository.findCustomAll());
-        return personRepository.findCustomAll();
+
+    @GetMapping("/personsByNativeQuery")
+    public List<Person> getPersonCustNativeQuery(){
+        return personRepository.findAllWithCustomNativeQuery();
     }
-*/
+
+    @GetMapping("/personsByNamedQuery")
+    public List<Person> getPersonCust(){
+        return personRepository.findAllWithCustomNamedQuery();
+    }
+
+    @GetMapping("/personByName/{name}/{id}")
+    public Person getPersonByName(@PathVariable String name, @PathVariable int id){
+        return personRepository.findPersonByNameAndId(name, id);
+    }
+
 
 
     @GetMapping("/personById/{id}")
